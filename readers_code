@@ -1,0 +1,18 @@
+# Starve_free_readers_wriers_problem_solution
+for readers
+
+wait(entry);
+ wait(m);
+  in_readcount++;
+ signal(m);
+signal(entry);
+/*read*/
+wait(m);
+ in_read_count--;
+ if(in_read_count==0){
+  if(waiting_writers_count>0){
+    signal(wrt);
+  }
+ }
+ signal(m);
+ 
