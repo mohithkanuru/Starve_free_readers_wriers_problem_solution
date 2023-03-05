@@ -47,3 +47,14 @@ wait(m);
   wrtwaiting=0;
  signal(entry);
  ```
+ 
+ ## Corectness of the solution
+ 
+ ### Mutual exclusion
+ we have ensured that a writer writes only when no reader is in the critical section by waiting for wrt(waiting for all the previous readers to finish reading),and
+ not allowing any other readers into C.S by keeping entry semaphore with the writer. and any number of readers can access C.S if no writer is writing. Hence This solution ensures mutual exclusion.
+ ### Progress
+ We have ensured there occurs no deadlock and also entry of any process into C.S is not decided in the remainder section ,Hence this solution satisfies progress critirea also.
+ ### Bounded waiting 
+ Here our writer just have to wait for the readers that came before him and he can access C.S after all readers and writers that came before him completes which takes finite time hence there no unbounded waiting for writers in this solution as in readers dominant solution, readers just have to wait for the writers that came before them finishes their job and once done he can access C.S. Hence no unbounded waiting for both readers and writers.Hence there is no starvation for both readers and writers.
+ 
